@@ -1,4 +1,4 @@
-git add ."""
+"""
 Visualizador de camadas vetoriais (Shapefile, GeoPackage, KML/KMZ, GeoJSON)
 Rodar com:  streamlit run app.py
 """
