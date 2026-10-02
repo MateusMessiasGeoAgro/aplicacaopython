@@ -14,7 +14,12 @@ import streamlit as st
 from folium.features import GeoJsonPopup, GeoJsonTooltip
 from streamlit_folium import st_folium
 
+import auth
+
 st.set_page_config(page_title="Visualizador de Camadas", page_icon="🗺️", layout="wide")
+
+# Login obrigatório: nada abaixo desta linha roda sem autenticação
+auth.exigir_login()
 
 EXTENSOES_PRINCIPAIS = (".shp", ".gpkg", ".kml", ".geojson", ".json")
 MAX_FEICOES_MAPA = 20000
@@ -135,6 +140,8 @@ def montar_mapa(gdf: gpd.GeoDataFrame, colunas_popup: list[str]) -> folium.Map:
 # ----------------------------------------------------------------------------
 st.title("🗺️ Visualizador de Camadas")
 st.caption("Envie um Shapefile, GeoPackage, KML/KMZ ou GeoJSON para ver o mapa e a tabela de atributos.")
+
+auth.botao_logout()
 
 with st.sidebar:
     st.header("Arquivo")
